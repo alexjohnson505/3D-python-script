@@ -5,7 +5,7 @@
 
 # Initial source code from '3D_Scripting_Mac/CS4800/simple_animation.py'
 # These scripts have been included in the .zip file, and can be
-# found in the '/Example Scripts folder'.
+# found in the '/examples folder'.
 
 # Maya's Python commands can be found online at:
 # http://download.autodesk.com/us/maya/2010help/CommandsPython/index_all.html
