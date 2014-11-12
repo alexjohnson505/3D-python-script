@@ -11,14 +11,17 @@
 import maya.cmds as cmds
 import random
 
-#set initial camera attributes
+# set initial camera position
 cmds.setAttr('persp.translateX', -15.000)
 cmds.setAttr('persp.translateY', 10.000)
 cmds.setAttr('persp.translateZ', 20.000)
 
+# set initial camera angle
 cmds.setAttr('persp.rotateX', -15.000)
 cmds.setAttr('persp.rotateY', -35.000)
 cmds.setAttr('persp.rotateZ', 0.000)
+
+# set playback options
 cmds.playbackOptions( minTime='0sec', maxTime='15sec', ast=0, ps=1.8)
 
 
