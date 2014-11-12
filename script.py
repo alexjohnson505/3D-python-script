@@ -44,6 +44,10 @@ cmds.polySphere(n='sphere01', sx=15, sy=20, r=1)
 # Query the radius of the new sphere
 r = cmds.polySphere('sphere01', q=True, sx=True )
 
+# Set sphere's pivot point to the bottom.
+# -> Makes scaling the sphere upon collision easier
+cmds.move(0, -1, "sphere01.scalePivot","sphere01.rotatePivot", absolute=True)
+
 ## Pull Back perspective over 200 frames.
 # start perspective change
 cmds.setKeyframe( 'persp', v=-20,      at='translateX', itt='linear', ott='linear', t = 0)
@@ -61,22 +65,22 @@ cameraShape = cameraName[1]
 
 ## Move camera through scene
 # Camera Start Position
-cmds.setKeyframe(cameraName, v=6.8,     at='translateX', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe(cameraName, v=9.5,      at='translateY', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe(cameraName, v=15.8,      at='translateZ', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=6.8,       at='translateX', itt='spline', ott='spline', t = 0)
+cmds.setKeyframe(cameraName, v=9.5,       at='translateY', itt='spline', ott='spline', t = 0)
+cmds.setKeyframe(cameraName, v=15.8,      at='translateZ', itt='spline', ott='spline', t = 0)
 
-cmds.setKeyframe(cameraName, v=-24.3,     at='rotateX', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe(cameraName, v=22.7,      at='rotateY', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe(cameraName, v=0,      at='rotateZ', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=-24.3,     at='rotateX', itt='spline', ott='spline', t = 0)
+cmds.setKeyframe(cameraName, v=22.7,      at='rotateY', itt='spline', ott='spline', t = 0)
+cmds.setKeyframe(cameraName, v=0,         at='rotateZ', itt='spline', ott='spline', t = 0)
 
 # Camera End Position
-cmds.setKeyframe(cameraName, v=-3.3,     at='translateX', itt='linear', ott='linear', t = 150)
-cmds.setKeyframe(cameraName, v=4.0,      at='translateY', itt='linear', ott='linear', t = 150)
-cmds.setKeyframe(cameraName, v=5.6,      at='translateZ', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=-3.3,      at='translateX', itt='spline', ott='spline', t = 150)
+cmds.setKeyframe(cameraName, v=4.0,       at='translateY', itt='spline', ott='spline', t = 150)
+cmds.setKeyframe(cameraName, v=5.6,       at='translateZ', itt='spline', ott='spline', t = 150)
 
-cmds.setKeyframe(cameraName, v=-18.3,     at='rotateX', itt='linear', ott='linear', t = 150)
-cmds.setKeyframe(cameraName, v=-34.1,      at='rotateY', itt='linear', ott='linear', t = 150)
-cmds.setKeyframe(cameraName, v=0.0,      at='rotateZ', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=-18.3,     at='rotateX', itt='spline', ott='spline', t = 150)
+cmds.setKeyframe(cameraName, v=-34.1,     at='rotateY', itt='spline', ott='spline', t = 150)
+cmds.setKeyframe(cameraName, v=0.0,       at='rotateZ', itt='spline', ott='spline', t = 150)
 
 ## Animate Sphere over 200 frames
 
