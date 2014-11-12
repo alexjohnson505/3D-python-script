@@ -7,33 +7,37 @@
 # These scripts have been included in the .zip file, and can be
 # found in the '/Example Scripts folder'.
 
-
-# Python commands can be read from Autodesks's support site:
+# Maya's Python commands can be found online at:
 # http://download.autodesk.com/us/maya/2010help/CommandsPython/index_all.html
 
 import maya.cmds as cmds
 import random
 
-# start with 'clean slate'
-# erases anything on stage creates a new file
+# Start scene with a "clean slate"
+# -> erase any artifacts on stage
 newfile = cmds.file(f=True, new=True)
+
+#*************************************
+#       Scene Configuration
+#*************************************
 
 # Set playback options
 cmds.playbackOptions( loop='continuous' )
-cmds.playbackOptions( minTime='0sec', maxTime='5sec' )
+cmds.playbackOptions( minTime='0sec', maxTime='5sec', ast=0, ps=1.8)
 
-# set initial camera position
+# set initial perspective position
 cmds.setAttr('persp.translateX', -15.000)
 cmds.setAttr('persp.translateY', 10.000)
 cmds.setAttr('persp.translateZ', 20.000)
 
-# set initial camera angle
+# set initial perspective angle
 cmds.setAttr('persp.rotateX', -15.000)
 cmds.setAttr('persp.rotateY', -35.000)
 cmds.setAttr('persp.rotateZ', 0.000)
 
-# set playback options
-cmds.playbackOptions( minTime='0sec', maxTime='15sec', ast=0, ps=1.8)
+#*************************************
+#      Object Configuration
+#*************************************
 
 # Create a sphere, with 10 subdivisions in the X direction,
 # and 15 subdivisions in the Y direction,
@@ -54,6 +58,10 @@ cmds.move(0, -1, "sphere01.scalePivot","sphere01.rotatePivot", absolute=True)
 c = cmds.polyCube(sx=10, sy=15, sz=5, h=.25, w=5, d=5)
 cmds.setKeyframe(c, v=-0.3, at='translateY', itt='linear', ott='linear', t = 0)
 
+#*************************************
+#     Perspective Movement
+#*************************************
+
 ## Pull Back perspective over 200 frames.
 # start perspective change
 cmds.setKeyframe( 'persp', v=-20,      at='translateX', itt='linear', ott='linear', t = 0)
@@ -65,9 +73,17 @@ cmds.setKeyframe( 'persp', v=-15,    at='translateX', itt='linear', ott='linear'
 cmds.setKeyframe( 'persp', v=10,     at='translateY', itt='linear', ott='linear', t = 200)
 cmds.setKeyframe( 'persp', v=20,     at='translateZ', itt='linear', ott='linear', t = 200)
 
+#*************************************
+#      Camera Configuration
+#*************************************
+
 ## Create camera
 cameraName = cmds.camera()
 cameraShape = cameraName[1]
+
+#*************************************
+#      Camera Movement
+#*************************************
 
 ## Move camera through scene
 # Camera Start Position
@@ -88,18 +104,27 @@ cmds.setKeyframe(cameraName, v=-18.3,     at='rotateX', itt='spline', ott='splin
 cmds.setKeyframe(cameraName, v=-34.1,     at='rotateY', itt='spline', ott='spline', t = 150)
 cmds.setKeyframe(cameraName, v=0.0,       at='rotateZ', itt='spline', ott='spline', t = 150)
 
-## Animate Sphere over 200 frames
+#*************************************
+#    Sphere Animation - Translate
+#*************************************
 
-# Translate
-cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='spline', ott='spline', t = 0)
+# Animate a sphere as it bounces vertically.
+# Translate manages it's vertical position
+
+cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='spline', ott='spline', t = 60)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='translateY', itt='spline', ott='spline', t = 90)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='translateY', itt='spline', ott='spline', t = 110)
-cmds.setKeyframe( 'sphere01', v=5.5,     at='translateY', itt='spline', ott='spline', t = 200)
+cmds.setKeyframe( 'sphere01', v=5.5,     at='translateY', itt='spline', ott='spline', t = 160)
 
-## Scale
+#*************************************
+#    Sphere Animation - Scale
+#*************************************
 
-# Start
-cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 0)
+# Animate a sphere as it bounces vertically.
+# Scale manages the shape deformation/compressions
+
+# Initial keyframe
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 60)
 
 # Start Compression
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleX', itt='linear', ott='linear', t = 90)
@@ -108,7 +133,7 @@ cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleZ', itt='linear', ott='linear'
 
 # Max Compression
 cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleX', itt='spline', ott='spline', t = 100)
-cmds.setKeyframe( 'sphere01', v=0.5,     at='scaleY', itt='spline', ott='spline', t = 100)
+cmds.setKeyframe( 'sphere01', v=0.6,     at='scaleY', itt='spline', ott='spline', t = 100)
 cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleZ', itt='spline', ott='spline', t = 100)
 
 # End Compression
@@ -116,6 +141,8 @@ cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleX', itt='linear', ott='linear'
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 110)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleZ', itt='linear', ott='linear', t = 110)
 
-# End
-cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleY', itt='linear', ott='linear', t = 130)
-cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 180)
+# End rebound compressions
+cmds.setKeyframe( 'sphere01', v=1.2,     at='scaleY', itt='linear', ott='linear', t = 130)
+
+# Final keyframe
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 150)
