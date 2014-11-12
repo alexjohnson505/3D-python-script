@@ -52,7 +52,7 @@ cmds.move(0, -1, "sphere01.scalePivot","sphere01.rotatePivot", absolute=True)
 # result is a 20 units height rectangular box
 # with 10 subdivisions along X, 15 along Y and 20 along Z.
 c = cmds.polyCube(sx=10, sy=15, sz=5, h=.25, w=5, d=5)
-cmds.setKeyframe(c, v=-0.333, at='scaleY', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(c, v=-0.3, at='translateY', itt='linear', ott='linear', t = 0)
 
 ## Pull Back perspective over 200 frames.
 # start perspective change
