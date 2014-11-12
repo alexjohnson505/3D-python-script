@@ -88,14 +88,32 @@ cmds.setKeyframe(cameraName, v=0.0,       at='rotateZ', itt='spline', ott='splin
 cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='linear', ott='linear', t = 0)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='translateY', itt='linear', ott='linear', t = 90)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='translateY', itt='linear', ott='linear', t = 110)
-cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='linear', ott='linear', t = 200)
+cmds.setKeyframe( 'sphere01', v=5.5,     at='translateY', itt='linear', ott='linear', t = 200)
 
-# Scale
+## Scale
+
+# Start
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 0)
+
+# Start Compression
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleX', itt='linear', ott='linear', t = 90)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 90)
-cmds.setKeyframe( 'sphere01', v=0.5,     at='scaleY', itt='linear', ott='linear', t = 100)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleZ', itt='linear', ott='linear', t = 90)
+
+# Max Compression
+cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleX', itt='spline', ott='spline', t = 100)
+cmds.setKeyframe( 'sphere01', v=0.5,     at='scaleY', itt='spline', ott='spline', t = 100)
+cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleZ', itt='spline', ott='spline', t = 100)
+
+# End Compression
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleX', itt='linear', ott='linear', t = 110)
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 110)
-cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 200)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleZ', itt='linear', ott='linear', t = 110)
+
+# End
+cmds.setKeyframe( 'sphere01', v=1.3,     at='scaleY', itt='linear', ott='linear', t = 130)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 180)
+
 
 
 # #move sub
