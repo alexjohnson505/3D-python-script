@@ -44,28 +44,54 @@ cmds.polySphere(n='sphere01', sx=15, sy=20, r=1)
 # Query the radius of the new sphere
 r = cmds.polySphere('sphere01', q=True, sx=True )
 
-## Pull Back camera over 200 frames.
-
-# start camera change
+## Pull Back perspective over 200 frames.
+# start perspective change
 cmds.setKeyframe( 'persp', v=-20,      at='translateX', itt='linear', ott='linear', t = 0)
 cmds.setKeyframe( 'persp', v=15,       at='translateY', itt='linear', ott='linear', t = 0)
 cmds.setKeyframe( 'persp', v=25,       at='translateZ', itt='linear', ott='linear', t = 0)
 
-# finish camera change
+# finish perspective change
 cmds.setKeyframe( 'persp', v=-15,    at='translateX', itt='linear', ott='linear', t = 200)
 cmds.setKeyframe( 'persp', v=10,     at='translateY', itt='linear', ott='linear', t = 200)
 cmds.setKeyframe( 'persp', v=20,     at='translateZ', itt='linear', ott='linear', t = 200)
+
+## Create camera
+cameraName = cmds.camera()
+cameraShape = cameraName[1]
+
+## Move camera through scene
+# Camera Start Position
+cmds.setKeyframe(cameraName, v=6.8,     at='translateX', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=9.5,      at='translateY', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=15.8,      at='translateZ', itt='linear', ott='linear', t = 0)
+
+cmds.setKeyframe(cameraName, v=-24.3,     at='rotateX', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=22.7,      at='rotateY', itt='linear', ott='linear', t = 0)
+cmds.setKeyframe(cameraName, v=0,      at='rotateZ', itt='linear', ott='linear', t = 0)
+
+# Camera End Position
+cmds.setKeyframe(cameraName, v=-3.3,     at='translateX', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=4.0,      at='translateY', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=5.6,      at='translateZ', itt='linear', ott='linear', t = 150)
+
+cmds.setKeyframe(cameraName, v=-18.3,     at='rotateX', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=-34.1,      at='rotateY', itt='linear', ott='linear', t = 150)
+cmds.setKeyframe(cameraName, v=0.0,      at='rotateZ', itt='linear', ott='linear', t = 150)
 
 ## Animate Sphere over 200 frames
 
 # Translate
 cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe( 'sphere01', v=.5,     at='translateY', itt='linear', ott='linear', t = 200)
+cmds.setKeyframe( 'sphere01', v=.5,     at='translateY', itt='linear', ott='linear', t = 100)
+cmds.setKeyframe( 'sphere01', v=6.0,     at='translateY', itt='linear', ott='linear', t = 200)
 
 # Scale
 cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 0)
-cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 180)
-cmds.setKeyframe( 'sphere01', v=0.5,     at='scaleY', itt='linear', ott='linear', t = 200)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 80)
+cmds.setKeyframe( 'sphere01', v=0.5,     at='scaleY', itt='linear', ott='linear', t = 100)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 120)
+cmds.setKeyframe( 'sphere01', v=1.0,     at='scaleY', itt='linear', ott='linear', t = 200)
+
 
 # #move sub
 # cmds.setKeyframe( 'moveSub2', v=0.0,         at='translateZ', itt='spline', ott='spline', t = 0)
