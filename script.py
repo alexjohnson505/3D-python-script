@@ -8,6 +8,9 @@
 # found in the '/Example Scripts folder'.
 
 
+# Python commands can be read from Autodesks's support site:
+# http://download.autodesk.com/us/maya/2010help/CommandsPython/index_all.html
+
 import maya.cmds as cmds
 import random
 
@@ -24,6 +27,14 @@ cmds.setAttr('persp.rotateZ', 0.000)
 # set playback options
 cmds.playbackOptions( minTime='0sec', maxTime='15sec', ast=0, ps=1.8)
 
+# Create a sphere, with 10 subdivisions in the X direction,
+# and 15 subdivisions in the Y direction,
+# the radius of the sphere is 20.
+# http://download.autodesk.com/us/maya/2010help/CommandsPython/polySphere.html
+cmds.polySphere(n='sphere01', sx=15, sy=20, r=1)
+
+# Query the radius of the new sphere
+r = cmds.polySphere('sphere01', q=True, sx=True )
 
 # #start camera change (wait 48 frames = 2 secs)
 # cmds.setKeyframe( 'persp', v=50.305,    at='translateX', itt='linear', ott='linear', t = 48)
